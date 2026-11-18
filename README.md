@@ -1,5 +1,7 @@
 # NovaLab 3D — Virtual Science Lab for Students
 
+**🌐 Live Demo: https://novalab-3d.vercel.app** (deployed on Vercel, free Hobby plan)
+
 A next-generation alternative to OLabs, built with **Next.js + Three.js**. Students practise Physics, Chemistry and Biology experiments in high-quality interactive 3D — with live calculations, real apparatus-style controls, theory and procedure for every lab.
 
 ![Stack](https://img.shields.io/badge/Next.js-16-black) ![Three.js](https://img.shields.io/badge/Three.js-0.187-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
