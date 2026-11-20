@@ -11,6 +11,14 @@ const scenes: Record<string, any> = {
   molecule: dynamic(() => import("@/components/experiments/Molecule"), { ssr: false, loading: Loading }),
   optics: dynamic(() => import("@/components/experiments/Optics"), { ssr: false, loading: Loading }),
   dna: dynamic(() => import("@/components/experiments/Dna"), { ssr: false, loading: Loading }),
+  "ohms-law": dynamic(() => import("@/components/experiments/OhmsLaw"), { ssr: false, loading: Loading }),
+  "hookes-law": dynamic(() => import("@/components/experiments/HookesLaw"), { ssr: false, loading: Loading }),
+  prism: dynamic(() => import("@/components/experiments/Prism"), { ssr: false, loading: Loading }),
+  titration: dynamic(() => import("@/components/experiments/Titration"), { ssr: false, loading: Loading }),
+  "ph-lab": dynamic(() => import("@/components/experiments/PhLab"), { ssr: false, loading: Loading }),
+  "flame-test": dynamic(() => import("@/components/experiments/FlameTest"), { ssr: false, loading: Loading }),
+  "salt-analysis": dynamic(() => import("@/components/experiments/SaltAnalysis"), { ssr: false, loading: Loading }),
+  "organic-tests": dynamic(() => import("@/components/experiments/OrganicTests"), { ssr: false, loading: Loading }),
 };
 
 export default function LabClient({ id }: { id: string }) {

@@ -92,6 +92,41 @@ export function floor(scene: THREE.Scene, size = 30, color = 0x0f172a) {
   return g;
 }
 
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+const gltfLoader = new GLTFLoader();
+const modelCache = new Map<string, Promise<ArrayBuffer>>();
+
+function fetchModelBuffer(name: string): Promise<ArrayBuffer> {
+  if (!modelCache.has(name)) {
+    modelCache.set(name, fetch(`/models/${name}.glb.b64`).then(async (r) => {
+      const b64 = (await r.text()).trim();
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes.buffer as ArrayBuffer;
+    }));
+  }
+  return modelCache.get(name)!;
+}
+
+/** Load an imported .glb apparatus model, normalised: scaled so its height is
+ *  targetHeight scene units, base resting on y=0, centred on x/z origin. */
+export async function loadModel(name: string, targetHeight: number): Promise<THREE.Group> {
+  const buf = await fetchModelBuffer(name);
+  const gltf = await gltfLoader.parseAsync(buf.slice(0), "");
+  const obj = gltf.scene;
+  const box = new THREE.Box3().setFromObject(obj);
+  const size = box.getSize(new THREE.Vector3());
+  const s = targetHeight / (size.y || 1);
+  obj.scale.setScalar(s);
+  const box2 = new THREE.Box3().setFromObject(obj);
+  const c = box2.getCenter(new THREE.Vector3());
+  obj.position.x -= c.x; obj.position.z -= c.z; obj.position.y -= box2.min.y;
+  obj.traverse((o) => { if ((o as THREE.Mesh).isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  return obj;
+}
+
 export function labelSprite(text: string, color = "#ffffff", scale = 1) {
   const c = document.createElement("canvas"); c.width = 256; c.height = 80;
   const ctx = c.getContext("2d")!; ctx.font = "bold 36px Inter, Arial"; ctx.textAlign = "center"; ctx.textBaseline = "middle";

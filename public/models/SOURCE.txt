@@ -1,0 +1,3 @@
+Apparatus 3D models (.glb, stored base64-encoded as .glb.b64 because the repo sync accepts text files only; decoded at runtime by src/lib/three-base.ts loadModel()).
+Source: CHEMOVATE Virtual Chemistry Lab - https://vcl-chemovate-lab.ishusaharan7373.chatgpt.site (imported 2026-11-20 at the project owner's request for a personal practice project; no licence was stated on the source site).
+Files: balance, beaker, burette-stand, burner, conical-flask, funnel, pipette, spatula, thermometer.

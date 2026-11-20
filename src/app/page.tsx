@@ -15,7 +15,7 @@ export default function Home() {
           <Link href="#labs" className="rounded-full bg-white/5 px-6 py-3.5 font-bold ring-1 ring-white/15 hover:bg-white/10 transition">Browse All Labs</Link>
         </div>
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 divide-x divide-white/10 rounded-2xl bg-white/[0.03] ring-1 ring-white/10">
-          {[["6", "3D Experiments"], ["< 1s", "Lab Load Time"], ["100%", "Free to Practice"]].map(([v, l]) => (<div key={l} className="py-4"><p className="text-xl font-black sm:text-2xl">{v}</p><p className="text-xs text-slate-400 sm:text-sm">{l}</p></div>))}
+          {[["14", "3D Experiments"], ["< 1s", "Lab Load Time"], ["100%", "Free to Practice"]].map(([v, l]) => (<div key={l} className="py-4"><p className="text-xl font-black sm:text-2xl">{v}</p><p className="text-xs text-slate-400 sm:text-sm">{l}</p></div>))}
         </div>
       </section>
       <section id="labs" className="scroll-mt-24 pb-16">
