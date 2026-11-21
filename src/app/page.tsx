@@ -1,39 +1,54 @@
 import Link from "next/link";
 import LabExplorer from "@/components/LabExplorer";
-import { Zap, MousePointerClick, Gauge, ShieldCheck, Smartphone } from "lucide-react";
+import PendulumPlate from "@/components/PendulumPlate";
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6">
-      <section className="relative overflow-hidden py-14 sm:py-20 text-center">
-        <div className="pointer-events-none absolute inset-0 -z-10"><div className="absolute left-1/2 top-0 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" /><div className="absolute right-10 top-24 h-40 w-40 rounded-full bg-cyan-500/15 blur-3xl" /></div>
-        <h1 className="mx-auto max-w-3xl text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">Practice experiments like you are <span className="text-cyan-300">actually in the lab</span></h1>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">No flat diagrams. No slow, blurry simulations. NovaLab 3D gives you high-quality interactive 3D models, live calculations, instant feedback and controls that feel like real apparatus.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/lab/pendulum" className="rounded-full bg-white px-6 py-3.5 font-bold text-slate-900 shadow-xl shadow-black/30 hover:bg-cyan-200 transition">Start First Experiment</Link>
-          <Link href="#labs" className="rounded-full bg-white/5 px-6 py-3.5 font-bold ring-1 ring-white/15 hover:bg-white/10 transition">Browse All Labs</Link>
+      <section className="graph-paper grid gap-10 border-b border-[#1c1a15] py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div>
+          <h1 className="font-display max-w-xl text-[42px] font-black leading-[1.02] tracking-tight sm:text-6xl">Practice experiments like you are <span className="text-[#2e40e0]">actually in the lab</span></h1>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-[#57534a]">Fourteen Physics and Chemistry experiments for Classes 11 and 12, each one a working 3D bench with live readings, not a video of someone else's practical.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/lab/pendulum" className="border border-[#1c1a15] bg-[#1c1a15] px-6 py-3.5 font-bold text-[#f5f1e8] transition hover:bg-[#2e40e0] hover:border-[#2e40e0]">Start with the pendulum</Link>
+            <Link href="#labs" className="border border-[#1c1a15] px-6 py-3.5 font-bold transition hover:bg-[#1c1a15] hover:text-[#f5f1e8]">Browse the index</Link>
+          </div>
+          <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-[#d9d2c0] pt-5 font-mono">
+            <div><dt className="text-xs text-[#57534a]">Experiments</dt><dd className="mt-1 text-2xl font-semibold">14</dd></div>
+            <div><dt className="text-xs text-[#57534a]">Classes</dt><dd className="mt-1 text-2xl font-semibold">11–12</dd></div>
+            <div><dt className="text-xs text-[#57534a]">Cost</dt><dd className="mt-1 text-2xl font-semibold">Free</dd></div>
+          </dl>
         </div>
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 divide-x divide-white/10 rounded-2xl bg-white/[0.03] ring-1 ring-white/10">
-          {[["14", "3D Experiments"], ["< 1s", "Lab Load Time"], ["100%", "Free to Practice"]].map(([v, l]) => (<div key={l} className="py-4"><p className="text-xl font-black sm:text-2xl">{v}</p><p className="text-xs text-slate-400 sm:text-sm">{l}</p></div>))}
-        </div>
+        <PendulumPlate />
       </section>
-      <section id="labs" className="scroll-mt-24 pb-16">
-        <div className="mb-6"><h2 className="text-2xl font-black sm:text-3xl">Choose your experiment</h2><p className="mt-1 text-slate-400">Physics, Chemistry and Biology - each with theory, procedure and live results.</p></div>
+
+      <section id="labs" className="scroll-mt-24 py-12">
+        <div className="mb-2 flex flex-wrap items-end justify-between gap-3">
+          <h2 className="font-display text-3xl font-black sm:text-4xl">The experiment index</h2>
+          <p className="font-mono text-xs text-[#57534a]">numbered as in the lab record book</p>
+        </div>
         <LabExplorer />
       </section>
-      <section id="why" className="scroll-mt-24 pb-20">
-        <h2 className="text-2xl font-black sm:text-3xl">Why students prefer NovaLab over old virtual labs</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <section id="why" className="scroll-mt-24 border-t border-[#1c1a15] py-12 pb-16">
+        <h2 className="font-display max-w-2xl text-3xl font-black sm:text-4xl">Why this bench, and not the old virtual labs</h2>
+        <div className="mt-8">
           {[
-            [Zap, "Super fast loading", "3D loads only for the lab you open, code-split per experiment. Homepage has zero 3D weight."],
-            [MousePointerClick, "Truly interactive", "Drag, rotate, change values and see physics update instantly - not just play a video."],
-            [Gauge, "Live calculations", "Period, range, focal length and more computed in real time and matched with theory."],
-            [Smartphone, "Works anywhere", "Responsive design, capped pixel ratio and lightweight geometry - smooth even on phones."],
-          ].map(([Icon, t, d]: any) => (
-            <div key={t} className="rounded-3xl bg-white/[0.03] p-5 ring-1 ring-white/10"><Icon className="size-6 text-cyan-300" /><h3 className="mt-3 font-bold">{t}</h3><p className="mt-1 text-sm leading-relaxed text-slate-400">{d}</p></div>
+            ["01", "It loads like a page, not a project", "3D is code-split per experiment, so the index opens instantly and each bench arrives only when you open it. The old sims made you wait 15 to 20 seconds for a plugin to wake up."],
+            ["02", "You turn the knobs yourself", "Drag, rotate, change values and watch the physics answer back. A pendulum you can lengthen teaches more than a video of a pendulum."],
+            ["03", "The numbers are computed, not printed", "Periods, currents, focal lengths, titres and pH are calculated live from your readings and checked against theory, the way a lab record is marked."],
+            ["04", "It runs on the phone in your pocket", "Capped pixel ratio and light geometry keep every bench smooth on modest hardware, because that is what most students actually have."],
+          ].map(([n, t, d]) => (
+            <div key={n} className="grid gap-2 border-t border-[#d9d2c0] py-6 sm:grid-cols-[64px_280px_1fr] sm:gap-6">
+              <span className="font-mono text-sm font-semibold text-[#2e40e0]">{n}</span>
+              <h3 className="font-display text-xl font-bold leading-snug">{t}</h3>
+              <p className="max-w-xl leading-relaxed text-[#57534a]">{d}</p>
+            </div>
           ))}
         </div>
-        <div className="mt-6 flex items-start gap-3 rounded-3xl bg-emerald-500/10 p-5 ring-1 ring-emerald-400/20"><ShieldCheck className="mt-0.5 size-5 shrink-0 text-emerald-300" /><p className="text-sm leading-relaxed text-emerald-100/90"><b>Quality promise:</b> Models are built procedurally with PBR materials, soft shadows, ACES tone mapping and proper lighting, and the chemistry benches use real Blender apparatus models - no low-poly placeholders.</p></div>
+        <div className="mt-4 border-l-2 border-[#2e40e0] bg-[#efe9dc] px-5 py-4">
+          <p className="leading-relaxed"><span className="font-bold">On quality.</span> <span className="text-[#57534a]">Models are built procedurally with PBR materials, soft shadows and ACES tone mapping, and the chemistry benches use real Blender apparatus models. No low-poly placeholders.</span></p>
+        </div>
       </section>
     </div>
   );
