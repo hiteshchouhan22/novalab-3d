@@ -78,7 +78,7 @@ export default function PhLab() {
       <div className="space-y-4">
         <Panel title="Test Samples">
           <div className="grid grid-cols-1 gap-1.5">{SAMPLES.map((sm, i) => <button key={sm.name} onClick={() => setSel(i)} className={`rounded-lg px-3 py-2 text-left text-sm font-semibold ${sel === i ? "bg-teal-500 text-white" : "bg-white/5 hover:bg-white/10"}`}>{sm.name}<span className="float-right text-xs font-medium opacity-75">{indicator ? sm.nature : "?"}</span></button>)}</div>
-          <button onClick={() => setIndicator(!indicator)} className={`w-full rounded-xl py-2.5 font-bold transition ${indicator ? "bg-gradient-to-r from-teal-500 to-cyan-500" : "bg-white/10"}`}>{indicator ? "Indicator Added - colours showing" : "Add Universal Indicator"}</button>
+          <button onClick={() => setIndicator(!indicator)} className={`w-full rounded-xl py-2.5 font-bold transition ${indicator ? "bg-teal-500" : "bg-white/10"}`}>{indicator ? "Indicator Added - colours showing" : "Add Universal Indicator"}</button>
         </Panel>
         <div className="grid grid-cols-2 gap-3">
           <Stat label="Sample" value={s.name.split(" ")[0]} sub={s.name} />

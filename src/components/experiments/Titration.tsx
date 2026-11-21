@@ -83,7 +83,7 @@ export default function Titration() {
       <div className="space-y-4">
         <Panel title="Burette Controls">
           <div className="flex gap-2">
-            <button onClick={() => setRunning(!running)} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-500 py-2.5 font-bold hover:opacity-90">{running ? <Pause className="size-4" /> : <Play className="size-4" />}{running ? "Close Tap" : "Open Tap"}</button>
+            <button onClick={() => setRunning(!running)} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-fuchsia-600 py-2.5 font-bold hover:opacity-90">{running ? <Pause className="size-4" /> : <Play className="size-4" />}{running ? "Close Tap" : "Open Tap"}</button>
             <button onClick={reset} className="grid size-11 place-items-center rounded-xl bg-white/10 hover:bg-white/15" title="Reset"><RotateCcw className="size-4" /></button>
           </div>
           <Slider label="Drop Rate" value={rate} min={0.2} max={3} step={0.2} unit="x" onChange={setRate} />

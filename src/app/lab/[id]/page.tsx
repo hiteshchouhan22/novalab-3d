@@ -17,8 +17,8 @@ export default async function LabPage({ params }: PageProps<"/lab/[id]">) {
       <Link href="/#labs" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-300 hover:text-white"><ArrowLeft className="size-4" /> All Experiments</Link>
       <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider"><span className={`rounded-full bg-gradient-to-r ${lab.gradient} px-3 py-1 text-white`}>{lab.subject}</span><span className="text-slate-400">{lab.classLevel} • <Clock className="inline size-3.5" /> {lab.duration} • {lab.difficulty}</span></div>
-          <h1 className="mt-3 text-3xl font-black sm:text-4xl">{lab.emoji} {lab.title}</h1>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold"><span className="rounded-full px-3 py-1 text-slate-950" style={{ backgroundColor: lab.accent }}>{lab.subject}</span><span className="text-slate-400">{lab.classLevel}</span><span className="flex items-center gap-1 text-slate-400"><Clock className="size-3.5" /> {lab.duration}</span><span className="text-slate-400">{lab.difficulty}</span></div>
+          <h1 className="mt-3 text-3xl font-black sm:text-4xl">{lab.title}</h1>
           <p className="mt-2 leading-relaxed text-slate-400">{lab.description}</p>
         </div>
         <Link href={`/lab/${next.id}`} className="group flex items-center gap-3 rounded-2xl bg-white/[0.04] px-4 py-3 ring-1 ring-white/10 hover:bg-white/[0.07]"><span className="text-right"><span className="block text-xs text-slate-400">Next experiment</span><span className="font-bold">{next.title}</span></span><ArrowRight className="size-5 transition group-hover:translate-x-1" /></Link>
