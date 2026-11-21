@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
             <Link href="/" className="flex items-center gap-2.5">
               <span className="grid size-9 place-items-center rounded-xl bg-cyan-400 shadow-lg shadow-cyan-500/20"><FlaskConical className="size-5 text-white" /></span>
-              <span className="text-lg font-black tracking-tight">NovaLab <span className="text-gradient">3D</span></span>
+              <span className="text-lg font-black tracking-tight">NovaLab <span className="text-cyan-300">3D</span></span>
             </Link>
             <nav className="hidden items-center gap-1 text-sm font-medium text-slate-300 md:flex">
               <Link href="/#labs" className="rounded-full px-4 py-2 hover:bg-white/5 hover:text-white">Experiments</Link>
